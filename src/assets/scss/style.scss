@@ -1,0 +1,10 @@
+@import 'common/imports';
+@import 'common/variables';
+@import 'common/mixins';
+@import 'common/typography';
+
+@import "header/header";
+
+body {
+  min-height: 150vh;
+}

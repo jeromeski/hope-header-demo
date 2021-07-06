@@ -1,0 +1,88 @@
+@charset "UTF-8";
+@import url(
+  https://fonts.googleapis.com/css?family=Inter:300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+  |Libre + Baskerville:400,
+  400i,
+  700
+);
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('./icofont.css');
+@import url('./typography.css');
+@import url('./animate.css');
+
+.sticky-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 15px 0px;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 11;
+  transition: all 0.3s;
+}
+
+.sticky-header.sticky {
+  opacity: 1;
+  visibility: visible;
+  animation: fadeInDown 0.5s ease-in-out;
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+}
+
+/******************************** 
+  offcanvas toggler btn
+ ********************************/
+.mobile-menu-toggle svg {
+  width: 50px;
+  height: 50px;
+}
+
+.mobile-menu-toggle svg path {
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
+    stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  fill: none;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 30px;
+}
+
+.mobile-menu-toggle svg path#top,
+.mobile-menu-toggle svg path#bottom {
+  stroke-dasharray: 240px 950px;
+}
+
+.mobile-menu-toggle svg path#middle {
+  stroke-dasharray: 240px 240px;
+}
+
+.mobile-menu-toggle .close svg path#top,
+.mobile-menu-toggle .close svg path#bottom {
+  stroke-dasharray: -650px;
+  stroke-dashoffset: -650px;
+}
+
+.mobile-menu-toggle .close svg path#middle {
+  stroke-dasharray: 1px 220px;
+  stroke-dashoffset: -115px;
+}
+
+.mobile-menu-toggle svg path {
+  stroke: #fff;
+}
+
+@media screen and (min-width: 992px) {
+  .mobile-menu-toggle svg path {
+    stroke: #fff;
+  }
+}
+
+.mobile-sticky.sticky svg path {
+  stroke: #000;
+}
