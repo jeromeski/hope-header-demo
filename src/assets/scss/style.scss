@@ -4,6 +4,8 @@
 @import 'common/typography';
 
 @import "header/header";
+@import "header/offcanvas-toggler";
+@import "header/offcanvas";
 
 body {
   min-height: 150vh;

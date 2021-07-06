@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../button';
 import Logo from '../logo';
+import MenuOverlay from '../menu-overlay';
+import MobileMenu from '../mobile-menu';
 import SocialIcon from '../social-icon';
-import HomeData from '../../data/home.json';
-import HeaderContactInfo from '../header-contact-info';
 
 function Header() {
+  const [ofcanvasShow, setOffCanvasShow] = useState(false);
+
+  const onCanvasHandler = () => {
+    setOffCanvasShow((prev) => !prev);
+  };
+
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
 
@@ -26,9 +31,9 @@ function Header() {
   return (
     <>
       <header className="header">
-        <div className="header-top d-none d-sm-block">
+        <div className="header-top d-xs-block">
           <div className="container">
-            <div className="row row-cols-2">
+            <div className="row">
               <div className="col">
                 <p>
                   <i className="icofont-google-map"></i> <span>ADDRESS:</span>{' '}
@@ -73,28 +78,14 @@ function Header() {
                 <div className="container">
                   <div className="row">
                     <div className="col-12">
-                      <div className="header-middle-content">
+                      <div className="header-middle-content d-flex justify-content-between">
                         <div className="header-logo">
-                          <Logo
-                            image={`${process.env.PUBLIC_URL}/img/logo.png`}
-                          />
+                          <Logo title="LogoInc" />
                         </div>
-                        <ul className="media-wrap d-none d-lg-flex">
-                          {HomeData[0].headerInfo &&
-                            HomeData[0].headerInfo.map((single, key) => {
-                              return (
-                                <HeaderContactInfo key={key} data={single} />
-                              );
-                            })}
-                        </ul>
-                        <Button
-                          path={process.env.PUBLIC_URL + '/'}
-                          classOption="book-now-btn d-none d-sm-inline-block d-lg-none"
-                          text="book an appointment"
-                        />
+
                         <div className="mobile-menu-toggle d-lg-none">
                           <button
-                            // onClick={onCanvasHandler}
+                            onClick={onCanvasHandler}
                             className="offcanvas-toggle">
                             <svg viewBox="0 0 800 600">
                               <path
@@ -117,11 +108,13 @@ function Header() {
           </div>
         </div>
         <div
-          className={`sticky-header bg-danger d-none d-sm-block ${
+          className={`sticky-header bg-danger d-none d-lg-block ${
             scroll > headerTop ? 'sticky' : ''
           }`}>
           <h3 className="text-light text-center">STICKY HEADER</h3>
         </div>
+        <MenuOverlay show={ofcanvasShow} />
+        <MobileMenu show={ofcanvasShow} onClose={onCanvasHandler} />
       </header>
     </>
   );
